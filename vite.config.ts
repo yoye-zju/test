@@ -10,9 +10,7 @@ export default defineConfig(({ mode }) => {
           rollupOptions: {
             output: {
               assetFileNames: (assetInfo) => {
-                if (assetInfo.name && assetInfo.name.endsWith('.css')) {
-                  return 'assets/[name]-[hash].css';
-                }
+
                 return 'assets/[name]-[hash].[ext]';
               },
             },
