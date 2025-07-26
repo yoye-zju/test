@@ -6,6 +6,7 @@ export default defineConfig(({ mode }) => {
     return {
       base: '/test/',
       build: {
+          outDir: 'docs', // 加这一行，构建输出到 docs 文件夹
           cssCodeSplit: true,
           rollupOptions: {
             output: {
