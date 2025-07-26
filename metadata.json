@@ -1,0 +1,6 @@
+{
+  "name": "Core Loss Curve Fitter",
+  "description": "An application to upload CSV data (coreloss, bac, fs), fit it to the Steinmetz equation (coreloss = k * bac^a * fs^b), and visualize the original data against the fitted curves.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}
