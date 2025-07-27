@@ -116,7 +116,7 @@ export const ResultsPanel: React.FC<ResultsPanelProps> = ({ result, onAnalyze, i
                     ) : (
                         <>
                             <SparklesIcon className="w-5 h-5 mr-2" />
-                            Analyze with AI
+                            Analyze with AIIII
                         </>
                     )}
                 </button>
