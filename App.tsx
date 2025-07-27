@@ -197,17 +197,17 @@ const App: React.FC = () => {
     const hasData = useMemo(() => originalData !== null && originalData.length > 0, [originalData]);
 
     return (
-        <div className="min-h-screen bg-slate-100 p-4 sm:p-6 lg:p-8">
+        <div className="min-h-screen bg-slate-100 p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto">
             <div className="max-w-7xl mx-auto">
-                <header className="mb-8">
-                    <h1 className="text-4xl font-bold text-slate-800 text-center">Core Loss Curve Fitter</h1>
-                    <p className="text-center text-slate-600 mt-2">
+                <header className="mb-12">
+                    <h1 className="text-5xl font-bold text-slate-800 text-center">Core Loss Curve Fitter</h1>
+                    <p className="text-center text-slate-600 mt-4">
                         Fit your magnetic material data to the Steinmetz equation: <span className="font-mono bg-slate-200 px-2 py-1 rounded">coreloss = k * bac<sup>a</sup> * fs<sup>b</sup></span>
                     </p>
                 </header>
 
-                <main className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                    <aside className="lg:col-span-4 xl:col-span-3">
+                <main className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                    <aside className="lg:col-span-2 xl:col-span-2 space-y-6">
                         <div className="bg-white p-6 rounded-xl shadow-lg space-y-6 sticky top-8">
                             <ApiKeyPanel apiKey={apiKey} onApiKeySave={handleApiKeySave} />
 
@@ -274,12 +274,12 @@ const App: React.FC = () => {
                         </div>
                     </aside>
 
-                    <section className="lg:col-span-8 xl:col-span-9 bg-white p-6 rounded-xl shadow-lg min-h-[60vh] flex flex-col justify-center items-center">
+                    <section className="lg:col-span-3 xl:col-span-3 bg-white p-6 rounded-xl shadow-lg min-h-[60vh] flex flex-col justify-center items-center">
                        {chartData && fitResult ? (
                             <CoreLossChart data={chartData} />
                        ) : (
                             <div className="w-full py-8">
-                                <AppRequirements />
+                                <AppRequirements className="mb-12" />
                             </div>
                        )}
                     </section>
