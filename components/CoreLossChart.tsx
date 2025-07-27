@@ -79,7 +79,7 @@ export const CoreLossChart: React.FC<CoreLossChartProps> = ({ data }) => {
           domain={[0.01, 0.2]}
           ticks={xTicks}
           tickFormatter={(tick) => String(tick)}
-          label={{ value: 'Bac (T)', offset: 0, dy: 0 }}
+          label={{ value: 'Bac (T)', offset: 0, dy: 20 }}
           allowDataOverflow={true}
         />
         <YAxis

@@ -22,9 +22,9 @@ const CsvExampleSvg = () => (
         <line x1="0" y1="105" x2="350" y2="105" className="grid-line" />
         
         {/* Headers */}
-        <text x="10" y="22" className="header">coreloss</text>
-        <text x="170" y="22" className="header">bac</text>
-        <text x="265" y="22" className="header">fs</text>
+        <text x="10" y="22" className="header">coreloss (mW/cm³)</text>
+        <text x="170" y="22" className="header">bac (T)</text>
+        <text x="265" y="22" className="header">fs (kHz)</text>
 
         {/* Row 1 */}
         <text x="10" y="57" className="cell">5</text>
@@ -49,72 +49,74 @@ export const AppRequirements: React.FC = () => {
         <div className="text-left max-w-3xl mx-auto text-slate-700 space-y-8 px-4">
             <div>
                 <h2 className="text-2xl font-bold text-slate-800 border-b pb-2 mb-4">
-                    Application Overview
+                    应用概述
                 </h2>
                 <p>
-                    This tool is designed to help engineers and researchers analyze the core loss characteristics of magnetic materials. It takes empirical measurement data and fits it to the <strong>Steinmetz Equation</strong>, a standard model used in magnetics.
+                    本工具旨在帮助工程师和研究人员分析磁性材料的磁芯损耗特性。它将经验测量数据拟合到磁学中使用的标准模型——<strong>斯坦梅茨方程</strong>。
                 </p>
             </div>
 
             <div>
                 <h2 className="text-2xl font-bold text-slate-800 border-b pb-2 mb-4">
-                    How to Use
+                    使用方法
                 </h2>
                 <ol className="list-decimal list-inside space-y-3">
                     <li>
-                        <strong>Prepare Your Data:</strong> Ensure your measurement data is in a CSV file and formatted according to the requirements below. Pay close attention to the required units.
+                        <strong>准备数据：</strong> 确保您的测量数据是CSV文件，并按照以下要求格式化。请密切注意所需的单位。
                     </li>
                     <li>
-                        <strong>Upload CSV File:</strong> Click the "Upload CSV" button and select your file. The app will validate the headers and data types.
+                        <strong>上传CSV文件：</strong> 点击“上传CSV”按钮并选择您的文件。应用程序将验证标题和数据类型。
                     </li>
                     <li>
-                        <strong>Calculate Fit:</strong> Once the data is loaded successfully, click the "Calculate Fit" button to perform the curve fitting.
+                        <strong>计算拟合：</strong> 数据成功加载后，点击“计算拟合”按钮执行曲线拟合。
                     </li>
                     <li>
-                        <strong>Analyze Results:</strong> Review the calculated Steinmetz parameters (k, a, b), goodness-of-fit metrics, and the interactive chart comparing your data to the fitted model.
+                        <strong>分析结果：</strong> 查看计算出的斯坦梅茨参数（k、a、b）、拟合优度指标以及比较您的数据与拟合模型的交互式图表。
                     </li>
                 </ol>
             </div>
 
             <div className="p-6 bg-slate-200/60 rounded-lg border border-slate-300">
                  <h2 className="text-2xl font-bold text-slate-800 border-b border-slate-300 pb-2 mb-4">
-                    Data Format Requirements
+                    数据格式要求
                 </h2>
-                <div className="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h3 className="font-semibold text-lg mb-2 text-slate-800">CSV File Rules</h3>
-                         <ul className="list-disc list-inside space-y-2">
-                            <li>The file must contain a header row.</li>
-                            <li>Column names must <strong>start with</strong> 'coreloss', 'bac', and 'fs' (case-insensitive).</li>
-                            <li>All data values must be positive numbers.</li>
-                            <li>A minimum of <strong>3 data rows</strong> is required for calculation.</li>
-                        </ul>
-                        
-                        <h3 className="font-semibold text-lg mt-6 mb-3 text-slate-800">Required Units (Crucial)</h3>
-                        <p className="mb-3">The accuracy of the results depends entirely on using the correct input units:</p>
-                        <ul className="list-none space-y-2 bg-white p-3 rounded-md border border-slate-300">
-                            <li className="flex items-center"><span className="font-mono bg-slate-200 px-2 py-1 rounded w-28 text-center mr-3">coreloss</span> <span>in</span> <strong className="ml-2">mW/cm³</strong></li>
-                            <li className="flex items-center"><span className="font-mono bg-slate-200 px-2 py-1 rounded w-28 text-center mr-3">bac</span> <span>in</span> <strong className="ml-2">T (Tesla)</strong></li>
-                            <li className="flex items-center"><span className="font-mono bg-slate-200 px-2 py-1 rounded w-28 text-center mr-3">fs</span> <span>in</span> <strong className="ml-2">kHz (kilohertz)</strong></li>
-                        </ul>
-                    </div>
-                     <div>
-                        <h3 className="font-semibold text-lg mb-2 text-slate-800">Example CSV Structure</h3>
-                        <CsvExampleSvg />
-                         <p className="text-xs text-slate-500 mt-2 text-center">Note: The units shown in the example header are for illustration only.</p>
+                <div className="grid md:grid-cols-1 gap-8">
+                    <div className="space-y-8">
+                        <div>
+                            <h3 className="font-semibold text-lg mb-2 text-slate-800">CSV 示例结构</h3>
+                            <CsvExampleSvg />
+                        </div>
+                        <div>
+                            <h3 className="font-semibold text-lg mb-2 text-slate-800">CSV 文件规则</h3>
+                            <ul className="list-disc list-inside space-y-2">
+                                <li>文件必须包含标题行。</li>
+                                <li>列名必须<strong>以</strong> 'coreloss'、'bac' 和 'fs' 开头（不区分大小写）。</li>
+                                <li>所有数据值必须是正数。</li>
+                                <li>数据应当是25度时的损耗数据</li>
+                                <li>计算至少需要<strong>9行数据，包括不同的Bac,fs</strong>。</li>
+                            </ul>
+                            
+                            <h3 className="font-semibold text-lg mt-6 mb-3 text-slate-800">所需单位（关键）</h3>
+                            <p className="mb-3">结果的准确性完全取决于使用正确的输入单位：</p>
+                            <ul className="list-none space-y-2 bg-white p-3 rounded-md border border-slate-300">
+                                <li className="flex items-center"><span className="font-mono bg-slate-200 px-2 py-1 rounded w-28 text-center mr-3">coreloss</span> <span>单位</span> <strong className="ml-2">mW/cm³</strong></li>
+                                <li className="flex items-center"><span className="font-mono bg-slate-200 px-2 py-1 rounded w-28 text-center mr-3">bac</span> <span>单位</span> <strong className="ml-2">T (特斯拉)</strong></li>
+                                <li className="flex items-center"><span className="font-mono bg-slate-200 px-2 py-1 rounded w-28 text-center mr-3">fs</span> <span>单位</span> <strong className="ml-2">kHz (千赫兹)</strong></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div>
                 <h2 className="text-2xl font-bold text-slate-800 border-b pb-2 mb-4">
-                    Understanding the Output
+                    理解输出
                 </h2>
                 <ul className="list-disc list-inside space-y-2">
-                    <li><strong>Parameters (k, a, b):</strong> These are the coefficients of the Steinmetz equation derived from your data. The panel includes warnings if 'a' or 'b' fall outside their typical physical range.</li>
-                    <li><strong>Goodness of Fit:</strong> Metrics like R² and RMSE tell you how well the model matches your data. Higher R² and lower RMSE are better.</li>
-                    <li><strong>Interactive Chart:</strong> This visualizes your original data points against the calculated curves for each frequency, allowing for an easy visual assessment of the fit quality.</li>
-                    <li><strong>Tooltips:</strong> Hover over the <InfoIcon className="w-4 h-4 inline-block -mt-1"/> icon next to each result for a detailed explanation.</li>
+                    <li><strong>参数 (k, a, b)：</strong> 这些是从您的数据中得出的斯坦梅茨方程的系数。如果 'a' 或 'b' 超出其典型的物理范围，面板会显示警告。</li>
+                    <li><strong>拟合优度：</strong> R² 和 RMSE 等指标表明模型与您的数据匹配的程度。R² 越高，RMSE 越低越好。</li>
+                    <li><strong>交互式图表：</strong> 这将您的原始数据点与每个频率的计算曲线进行可视化，以便轻松直观地评估拟合质量。</li>
+                    <li><strong>工具提示：</strong> 将鼠标悬停在每个结果旁边的 <InfoIcon className="w-4 h-4 inline-block -mt-1"/> 图标上，可查看详细说明。</li>
                 </ul>
             </div>
         </div>
