@@ -79,7 +79,7 @@ export const CoreLossChart: React.FC<CoreLossChartProps> = ({ data }) => {
           domain={[0.01, 0.2]}
           ticks={xTicks}
           tickFormatter={(tick) => String(tick)}
-          label={{ value: 'Bac (T)', offset: 0, dy: 20 }}
+          label={{ value: 'Bac (T)', offset: 0, dy: 0 }}
           allowDataOverflow={true}
         />
         <YAxis
@@ -93,7 +93,7 @@ export const CoreLossChart: React.FC<CoreLossChartProps> = ({ data }) => {
           allowDataOverflow={true}
         />
         <Tooltip content={<CustomTooltip />} />
-        <Legend verticalAlign="top" wrapperStyle={{ paddingTop: 20 }} />
+        <Legend verticalAlign="top" wrapperStyle={{ paddingTop: 0 }} />
         {fsValues.map((fs, index) => {
           const color = COLORS[index % COLORS.length];
           return (
