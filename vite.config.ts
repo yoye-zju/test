@@ -10,10 +10,7 @@ export default defineConfig(({ mode }) => {
           cssCodeSplit: true,
           rollupOptions: {
             output: {
-              assetFileNames: (assetInfo) => {
-
-                return 'assets/[name]-[hash].[ext]';
-              },
+              assetFileNames: 'assets/[name]-[hash].[ext]',
             },
           },
         },
